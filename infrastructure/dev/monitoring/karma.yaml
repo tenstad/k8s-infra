@@ -2,17 +2,17 @@
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: echo
-  namespace: dev
+  name: karma
+  namespace: monitoring
 spec:
   rules:
-    - host: echo.cluster.local
+    - host: karma.cluster.local
       http:
         paths:
-          - backend:
+          - path: /
+            pathType: Prefix
+            backend:
               service:
-                name: echo
+                name: karma
                 port:
                   number: 80
-            path: /
-            pathType: Prefix

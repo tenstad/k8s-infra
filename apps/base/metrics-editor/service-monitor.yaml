@@ -1,0 +1,15 @@
+---
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  name: metrics-editor
+  namespace: dev
+spec:
+  endpoints:
+    - interval: 5s
+      port: http
+      path: /api/text/metrics
+      scheme: http
+  selector:
+    matchLabels:
+      app: metrics-editor

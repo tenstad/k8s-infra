@@ -1,0 +1,23 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: metrics-editor
+  namespace: dev
+  labels:
+    app: metrics-editor
+spec:
+  selector:
+    matchLabels:
+      app: metrics-editor
+  template:
+    metadata:
+      labels:
+        app: metrics-editor
+    spec:
+      containers:
+        - name: metrics-editor
+          image: ekzhang/rustpad:latest
+          ports:
+            - name: http
+              containerPort: 3030

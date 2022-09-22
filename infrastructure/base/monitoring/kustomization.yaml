@@ -6,10 +6,10 @@ resources:
   - flux-monitoring-config.yaml
   - flux-monitoring-repo.yaml
   - helm-release-blackbox-exporter.yaml
-  - helm-release-kafka-exporter.yaml
   - helm-release-prometheus.yaml
   - helm-release-thanos.yaml
   - karma.yaml
   - metrics-server-monitor.yaml
+  - metrics-storage-secret.yaml
   - namespace.yaml
   - prometheus-community-helm-repo.yaml

@@ -1,0 +1,22 @@
+---
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: thanos
+  namespace: flux-system
+spec:
+  values:
+    query:
+      ingress:
+        # enabled: true
+        hostname: thanos-query.cluster.local
+    queryFrontend:
+      ingress:
+        hostname: thanos.cluster.local
+    storegateway:
+      ingress:
+        hostname: thanos-store.cluster.local
+    compactor:
+      ingress:
+        # enabled: true
+        hostname: thanos-compactor.cluster.local

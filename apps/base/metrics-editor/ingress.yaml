@@ -1,0 +1,23 @@
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: metrics-editor
+  namespace: dev
+  annotations:
+    # nginx.ingress.kubernetes.io/auth-type: basic
+    nginx.ingress.kubernetes.io/auth-secret: ingress-basic-auth
+    nginx.ingress.kubernetes.io/auth-realm: Authentication Required
+spec:
+  ingressClassName: nginx
+  rules:
+    - host: metrics-editor.cluster.local
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: metrics-editor
+                port:
+                  name: http

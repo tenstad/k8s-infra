@@ -17,14 +17,16 @@ spec:
       interval: 60m
   install:
     crds: Create
+    remediation:
+      retries: -1
   upgrade:
     crds: CreateReplace
   values:
     serviceMonitor:
       enabled: true
       targets:
-        - name: datajegeren
-          url: https://datafabrikken.norge.no/finn-data/datajegeren
+        - name: google
+          url: https://google.no
 #
 # TODO: TEST Probe
 #
