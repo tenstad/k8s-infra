@@ -29,3 +29,23 @@ spec:
         prometheus.io/scrape: "true"
       extraArgs:
         default-ssl-certificate: nginx/default-ssl-certificate
+      config:
+        custom-http-errors: "404,503"
+    defaultBackend:
+      enabled: true
+      image:
+        registry: registry.k8s.io
+        image: ingress-nginx/nginx-errors
+        tag: "v20220916-gd32f8c343@sha256:09c421ac743bace19ab77979b82186941c5125c95e62cdb40bdf41293b5c275c"
+      extraVolumes:
+        - name: custom-error-pages
+          configMap:
+            name: custom-error-pages
+            items:
+              - key: "404"
+                path: "404.html"
+              - key: "503"
+                path: "503.html"
+      extraVolumeMounts:
+        - name: custom-error-pages
+          mountPath: /www
