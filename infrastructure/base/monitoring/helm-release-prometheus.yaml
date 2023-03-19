@@ -134,6 +134,9 @@ spec:
                         alertname%3D%22{{- .Labels.alertname -}}%22%7D
                       {{- end -}}
     grafana:
+      grafana.ini:
+        dashboards:
+          min_refresh_interval: 100ms
       sidecar:
         datasources:
           url: http://monitoring-thanos-query-frontend.monitoring:9090
@@ -167,8 +170,8 @@ spec:
           objectStorageConfig:
             key: objstore.yml
             name: thanos-objstore
-        scrapeInterval: 15s
-        scrapeTimeout: 10s
+        scrapeInterval: 1s
+        scrapeTimeout: 1s
         # Allow Prometheus to discover all PodMonitors/ServiceMonitors within
         # without applying label filtering.
         podMonitorSelectorNilUsesHelmValues: false
