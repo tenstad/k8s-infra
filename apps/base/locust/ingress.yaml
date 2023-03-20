@@ -1,0 +1,19 @@
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: locust
+  namespace: dev
+spec:
+  ingressClassName: nginx
+  rules:
+    - host: locust.cluster.local
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: locust
+                port:
+                  name: http

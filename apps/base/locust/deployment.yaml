@@ -1,0 +1,28 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: locust
+  namespace: dev
+spec:
+  selector:
+    matchLabels:
+      app: locust
+  template:
+    metadata:
+      labels:
+        app: locust
+    spec:
+      containers: 
+        - name: locust
+          image: docker.io/locustio/locust
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 8089
+          volumeMounts:
+            - mountPath: /home/locust
+              name: locust-script
+      volumes:
+        - name: locust-script
+          configMap:
+            name: locust-script

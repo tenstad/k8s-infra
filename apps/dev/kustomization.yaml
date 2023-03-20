@@ -6,3 +6,4 @@ resources:
   - metrics-editor.yaml
   - minio.yaml
   - namespace.yaml
+  - locust.yaml
