@@ -7,4 +7,3 @@ resources:
   - helm-repo.yaml
   - namespace.yaml
   - ssl-cert.yaml
-  - servicemonitor.yaml
