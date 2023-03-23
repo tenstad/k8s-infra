@@ -4,6 +4,6 @@ kind: Kustomization
 resources:
   - keda.yaml
   - monitoring.yaml
-  - logging.yaml
+  # - logging.yaml
   - nginx.yaml
   - trivy.yaml
