@@ -58,7 +58,7 @@ Get Cluster IP and update /etc/hosts:
 
 ```
 ip=$(docker network inspect k3d-k3s-default | jq -r '.[0].Containers[] | select(.Name=="k3d-k3s-default-server-0") | .IPv4Address' | cut -d "/" -f1)
-for host in prometheus.cluster.local grafana.cluster.local karma.cluster.local thanos.cluster.local metrics-editor.cluster.local alertmanager.cluster.local minio.cluster.local minio-api.cluster.local; do
+for host in prometheus.cluster.local grafana.cluster.local karma.cluster.local thanos.cluster.local metrics-editor.cluster.local alertmanager.cluster.local minio.cluster.local minio-api.cluster.local locust.cluster.local kibana.cluster.local; do
   sudo sed -i "/${host}/d" /etc/hosts
   echo "${ip} ${host}" | sudo tee -a /etc/hosts
 done
@@ -94,6 +94,8 @@ to apply.
 [`metrics-editor.cluster.local`](http://metrics-editor.cluster.local)  
 [`alertmanager.cluster.local`](http://alertmanager.cluster.local)  
 [`minio.cluster.local`](https://minio.cluster.local) (minioadmin/minioadmin)  
+[`locust.cluster.local`](https://locust.cluster.local)  
+[`kibana.cluster.local`](https://kibana.cluster.local)  
 
 ## Cleanup
 
